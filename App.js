@@ -1,20 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import Login from "./screens/Login";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Feed from "./screens/Feed";
+import { AntDesign } from '@expo/vector-icons';
+import { Octicons } from '@expo/vector-icons';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} options={{headerTitleAlign:"center"}} />
+        <Stack.Screen name="Feed" component={Feed} options={{headerTitleAlign:"center",
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{ display: "flex", alignItems: "center" }}
+            onPress=""
+          >
+          <Image
+            style={{
+              width: 120,
+              height: 50,
+              resizeMode: "contain",
+              alignSelf: "center",
+              
+            }}
+            source={require("./assets/instalogo.png")}
+            
+          />
+          </TouchableOpacity>
+        ),
+        headerRight: () => (
+          <TouchableOpacity
+            style={{ display: "flex", alignItems: "center", flexDirection:"row" }}
+            onPress=""
+          >
+          <Octicons style={{paddingHorizontal:10}} name="diff-added" size={24} color="black" />
+          <AntDesign name="hearto" size={24} color="black" />
+          </TouchableOpacity>
+        ),
+        headerTitle:"",
+      }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
