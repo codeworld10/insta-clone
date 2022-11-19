@@ -137,7 +137,7 @@ const Profile = () => {
         <View>
         <FlatList
           data={Allposts}
-          keyExtractor={(item) => "_" + item.id}
+          keyExtractor={(item) => item.id}
           numColumns={3}
           renderItem={({ item }) => (
             <View
