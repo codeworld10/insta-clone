@@ -3,8 +3,10 @@ import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
 const Bottommenu = () => {
+  const navigation = useNavigation();
   return (
     <View>
      <View style={{display:"flex", flexDirection:"row", paddingBottom:10, justifyContent:"space-between", paddingHorizontal:20, borderTopColor:"grey", borderTopWidth:0.3,paddingVertical:10}}>
@@ -20,7 +22,7 @@ const Bottommenu = () => {
      <TouchableOpacity>
      <Feather name="send" size={27} color="black" />
      </TouchableOpacity>
-     <TouchableOpacity>
+     <TouchableOpacity onPress={() => {navigation.navigate("Profile")}}>
      <Image
      style={{height:25, width:25, resizeMode:"contain", borderRadius:150}}
      source={require("../assets/usm.png")}
